@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .top {
+        height: 60%;
+    }
+
+    .bot {
+        height: 40%;
+        border: 1px solid black;
+    }
+}
