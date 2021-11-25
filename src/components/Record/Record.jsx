@@ -4,10 +4,10 @@ import c from './record.module.scss'
 
 const Record = () => {
 
-    const { currentSong } = useContext(MusicPlayer)
+    const { currentSong, toggle } = useContext(MusicPlayer)
 
     return (
-        <div className={c.record} 
+        <div className={c.base} 
             // style={
             //     currentSong?.playing ?
             //     {animation: `${c.spin} 10s linear infinite`} 
@@ -15,11 +15,19 @@ const Record = () => {
             // }
             style={
                 currentSong ?
-                {transform: `rotate(${(currentSong.time/currentSong.duration)*360}deg)`}
+                {transform: `rotate(${(currentSong.time/60)*360}deg)`}
                 : {}
             }
         >
-            <div className={c.groove}>
+            <div 
+                className={c.record}
+                style={
+                    !currentSong ?
+                    {zIndex: '-1'}
+                    : {}
+                }
+                onClick={toggle}
+            >
                 <div className={c.groove}>
                     <div className={c.groove}>
                         <div className={c.groove}>

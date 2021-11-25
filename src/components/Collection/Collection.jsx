@@ -11,8 +11,10 @@ const Collection = () => {
         return (
             <div 
                 className={c.record} 
-                style={{left: `${i * 2}rem`, zIndex: `${100-i}`}}
-                onClick={() => selectSong(r)}
+                style={{left: `${i * 10}vw`, zIndex: `${100-i}`}}
+                // onClick={() => selectSong(r)}
+                onClick=""
+                onMouseUp={() => selectSong(r)}
                 key={i}
             >
                 <img 

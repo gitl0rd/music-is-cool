@@ -1,0 +1,27 @@
+// .container {
+//     position: relative;
+// }
+
+.arm {
+    // position: relative;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+
+.axis {
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+    border-radius: 99px;
+    text-align: center;
+}
+
+.rod {
+    height: 100px;
+    width: 15px;
+    background-color: brown;
+}

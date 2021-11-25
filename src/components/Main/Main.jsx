@@ -17,37 +17,48 @@ const Main = () => {
         audio.current.src = s.url
         setCurrentSong(s)
     }
+
+    const toggle = () => {
+        currentSong?.playing ? audio.current?.pause() : audio.current?.play()
+        setCurrentSong((f) => {
+            let data = {...f}
+            data.playing = !f.playing
+            return data
+        })
+    }
     
     return (
-        <MusicPlayer.Provider value={{ audio: audio.current, currentSong, setCurrentSong, selectSong }}>
+        <MusicPlayer.Provider value={{ audio: audio.current, currentSong, setCurrentSong, selectSong, toggle }}>
             <div className={c.main}>
                 <audio
                     ref={audio}
                     onLoadedData={() => {
                         let data = { ...currentSong }
                         data['duration'] = audio.current.duration
-                            
                         data['playing'] = false
                         setCurrentSong(data)
                     }}
                     onTimeUpdate={() => {
                         let data = { ...currentSong }
-                        data['time'] = 
-                            `${Math.floor(audio.current.currentTime / 60)}:${
-                                Math.floor(audio.current.currentTime) % 60
-                            }`
-                        
+                        data['time'] = audio.current.currentTime
                         setCurrentSong(data)
                       }
                     }
-              
                 />
                 <div className={c.top}>
                     <Deck />
                 </div>
-                <div className={c.bot}>
-                    <Collection />
+                <div>
+                    <div className={c.selected}>
+                        {currentSong &&
+                            `Now Playing: ${currentSong.title} \u2013 ${currentSong.artist}`
+                        }
+                    </div>
+                    <div className={c.bot}>
+                        <Collection />
+                    </div>
                 </div>
+                
             </div>
         </MusicPlayer.Provider>
         

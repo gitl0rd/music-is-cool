@@ -4,21 +4,21 @@ import c from './controls.module.scss'
 
 const Deck = () => {
 
-    const { audio, currentSong, setCurrentSong } = useContext(MusicPlayer)
+    const { currentSong, toggle } = useContext(MusicPlayer)
 
-    const toggle = () => {
-        currentSong?.playing ? audio?.pause() : audio?.play()
-        setCurrentSong((f) => {
-            let data = {...f}
-            data.playing = !f.playing
-            return data
-        })
+    const timify = (time) => {
+        return (
+            `${Math.floor(time / 60).toString().padStart(2, '0')}:${
+                (Math.floor(time) % 60).toString().padStart(2, '0')
+            }`
+        )
     }
 
     return (
         <div className={c.controls}>
             <div onClick={currentSong && toggle}>{currentSong?.playing ? 'pause' : 'play'}</div>
-            <div>{currentSong?.time || 0} / {currentSong?.duration || 0}</div>
+            {<div>{timify(currentSong?.time || 0)} / {timify(currentSong?.duration || 0)}</div>}
+            {}
         </div>
     )
 }

@@ -1,3 +1,8 @@
+.base {
+    @extend .groove;
+    background: silver;
+}
+
 .groove {
     border: 1px solid black;
     padding: 1rem;
