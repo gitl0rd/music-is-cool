@@ -21,11 +21,15 @@
         object-fit: cover;
     }
 
-    // &:hover {
-    //     animation: ease-in 1s linear;
+    // &:hover:not(:first-child) {
+    //     transform: translate(2rem, 0);
+    //     transition: transform 0.1s linear;
+    // }
+    &:hover {
+        transform: translate(0, -2rem);
+        transition: transform 0.1s linear;
+    }
+    // @media(hover: hover) and (pointer: fine) {
     //     transform: translate(2rem, 0)
     // }
-    @media(hover: hover) and (pointer: fine) {
-        transform: translate(2rem, 0)
-    }
 }

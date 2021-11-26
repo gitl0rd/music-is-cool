@@ -15,11 +15,14 @@ const Main = () => {
         console.log(s.url)
         //const player = new Audio(s.url)
         audio.current.src = s.url
+        audio.current.volume = 0.5
         setCurrentSong(s)
     }
 
     const toggle = () => {
-        currentSong?.playing ? audio.current?.pause() : audio.current?.play()
+        currentSong?.playing ? audio.current?.pause() : setTimeout(() => {
+            audio.current?.play()
+        }, 500);
         setCurrentSong((f) => {
             let data = {...f}
             data.playing = !f.playing

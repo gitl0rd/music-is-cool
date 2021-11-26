@@ -16,7 +16,7 @@ const Arm = () => {
                     className={c.axis}
                     style={
                         currentSong?.playing ? 
-                        {transform: 'rotate(20deg)'} 
+                        {transform: `rotate(${15+(currentSong.time/currentSong.duration)*15}deg)`} 
                         : {}
                     }
                 >

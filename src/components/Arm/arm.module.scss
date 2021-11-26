@@ -3,10 +3,11 @@
 // }
 
 .arm {
-    // position: relative;
+    // position: fixed;
     position: absolute;
     right: 10%;
     top: 10%;
+    z-index: 1000;
 }
 
 .axis {
@@ -18,10 +19,18 @@
     background-color: grey;
     border-radius: 99px;
     text-align: center;
+    z-index: 1000;
+
+    transition: transform 0.5s ease-in-out;
+
 }
 
 .rod {
-    height: 100px;
-    width: 15px;
+    height: 200px;
+    width: 10px;
     background-color: brown;
+    position: relative;
+    left: 30%;
+    top: 25%;
+    z-index: 999;
 }

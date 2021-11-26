@@ -29,7 +29,7 @@ const Record = () => {
                 onClick={toggle}
             >
                 <div className={c.groove}>
-                    <div className={c.groove}>
+                    {/* <div className={c.groove}> */}
                         <div className={c.groove}>
                             <div className={c.groove}>
                                 <div className={c.center}>
@@ -40,7 +40,7 @@ const Record = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         </div>

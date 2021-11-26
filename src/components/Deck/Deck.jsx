@@ -9,8 +9,8 @@ const Deck = () => {
     return (
         <div className={c.deck}>
             <div className={c.turntable}>
-                <Arm />
                 <Record />
+                <Arm />
             </div>
             <div>
                 <Controls />
