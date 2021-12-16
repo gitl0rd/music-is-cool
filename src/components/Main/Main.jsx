@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { things } from '../../music/music'
 import Collection from '../Collection/Collection'
 import Deck from '../Deck/Deck'
 import c from './main.module.scss'
@@ -7,19 +8,22 @@ export const MusicPlayer = React.createContext()
 
 const Main = () => {
 
-    const [currentSong, setCurrentSong] = useState(null)
     const audio = useRef()
+    const [currentSong, setCurrentSong] = useState(null)
+    const [order, setOrder] = useState(things.map((_, i) => i))
+    const [autoplay] = useState(true)
 
-    const selectSong = (s) => {
-        audio?.current.pause()
-        console.log(s.url)
-        //const player = new Audio(s.url)
+    const selectSong = (s, i) => {
+        console.log('selectSong')
+        if (!autoplay) audio?.current.pause()
         audio.current.src = s.url
         audio.current.volume = 0.5
+        s['index'] = i
         setCurrentSong(s)
     }
 
     const toggle = () => {
+        console.log('toggle')
         currentSong?.playing ? audio.current?.pause() : setTimeout(() => {
             audio.current?.play()
         }, 500);
@@ -29,16 +33,37 @@ const Main = () => {
             return data
         })
     }
+
+    const shuffle = () => {
+        let shuffled = order
+            .map((value) => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value)
+        setOrder(shuffled)
+    }
     
     return (
-        <MusicPlayer.Provider value={{ audio: audio.current, currentSong, setCurrentSong, selectSong, toggle }}>
+        <MusicPlayer.Provider value={{ 
+            audio: audio.current, 
+            currentSong, 
+            setCurrentSong, 
+            selectSong, 
+            toggle,
+            order
+        }}>
             <div className={c.main}>
                 <audio
                     ref={audio}
                     onLoadedData={() => {
+                        console.log('loaded')
                         let data = { ...currentSong }
                         data['duration'] = audio.current.duration
-                        data['playing'] = false
+                        data['playing'] = autoplay
+                        if (autoplay) {
+                            setTimeout(() => {
+                                audio.current?.play()
+                            }, 500)
+                        }
                         setCurrentSong(data)
                     }}
                     onTimeUpdate={() => {
@@ -47,18 +72,30 @@ const Main = () => {
                         setCurrentSong(data)
                       }
                     }
+                    onEnded={() => {
+                        console.log('ended')
+                        if (autoplay) {
+                            const i = order.indexOf(currentSong.index)
+                            const next = order[i === order.length-1 ? 0 : i+1]
+                            selectSong(things[next], next)
+                            // toggle()
+                        }
+                    }}
                 />
-                <div className={c.top}>
+                <div className={c.left}>
                     <Deck />
-                </div>
-                <div>
                     <div className={c.selected}>
                         {currentSong &&
                             `Now Playing: ${currentSong.title} \u2013 ${currentSong.artist}`
                         }
                     </div>
-                    <div className={c.bot}>
-                        <Collection />
+                </div>                    
+                <div className={c.right}>
+                    <Collection />
+                    <div className={c.playMode}>
+                        <button onClick={shuffle}>
+                            shuffle
+                        </button>
                     </div>
                 </div>
                 

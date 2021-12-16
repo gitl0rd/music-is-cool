@@ -5,8 +5,10 @@
 .arm {
     // position: fixed;
     position: absolute;
-    right: 10%;
-    top: 10%;
+    // right: 10%;
+    // top: 10%;
+    right: 0;
+    top: 0;
     z-index: 1000;
 }
 
@@ -16,7 +18,7 @@
     // right: 0;
     height: 30px;
     width: 30px;
-    background-color: grey;
+    background-color: brown;
     border-radius: 99px;
     text-align: center;
     z-index: 1000;
@@ -28,9 +30,20 @@
 .rod {
     height: 200px;
     width: 10px;
-    background-color: brown;
+    background-color: grey;
     position: relative;
     left: 30%;
     top: 25%;
     z-index: 999;
+    box-shadow: black 4px 4px;
+}
+
+.head {
+    height: 25px;
+    width: 15px;
+    background-color: orange;
+    text-align: center;
+    z-index: 1000;
+    position: absolute;
+    bottom: -4px;
 }

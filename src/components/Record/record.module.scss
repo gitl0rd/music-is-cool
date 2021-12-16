@@ -1,6 +1,7 @@
 .base {
     @extend .groove;
     background: silver;
+    // transition: transform 1s ease-in-out;
 }
 
 .groove {
@@ -22,7 +23,7 @@
             rgba(0,0,0,1) 100%
         );
     //animation: spin 10s linear;
-    transition: transform 0.1s ease-in-out;
+    // transition: transform 0.1s ease-in-out;
 }
 
 .center {
@@ -32,8 +33,8 @@
     padding: 0;
 
     img {
-        width: 6rem;
-        height: 6rem;
+        width: 100%;
+        height: 100%;
         border-radius: 999px;
         object-fit: cover;
     }

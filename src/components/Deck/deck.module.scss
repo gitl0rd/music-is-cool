@@ -1,13 +1,22 @@
-.deck {
+.box {
+    text-align: center;
+    // width: 400px;
+    margin: auto;
+    background-color: rgb(20,20,20);
+    color: white;
     padding: 20px;
+    border-radius: 20px;
+}
+
+.deck {
+    padding: 30px;
     position: relative;
+    width: min-content;
+    // margin: auto;
 }
 
 .turntable {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     text-align: center;
-    width:min-content;
-    margin: auto;
+    // width: min-content;
+    // margin: auto;
 }

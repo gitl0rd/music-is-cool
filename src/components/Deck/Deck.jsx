@@ -7,15 +7,18 @@ import Arm from '../Arm/Arm'
 const Deck = () => {
 
     return (
-        <div className={c.deck}>
-            <div className={c.turntable}>
-                <Record />
-                <Arm />
-            </div>
-            <div>
-                <Controls />
+        <div className={c.box}>
+            <div className={c.deck}>
+                <div className={c.turntable}>
+                    <Record />
+                    <Arm />
+                </div>
+                <div>
+                    <Controls />
+                </div>
             </div>
         </div>
+        
     )
 }
 

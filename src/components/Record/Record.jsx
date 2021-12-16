@@ -5,6 +5,7 @@ import c from './record.module.scss'
 const Record = () => {
 
     const { currentSong, toggle } = useContext(MusicPlayer)
+    // const []
 
     return (
         <div className={c.base} 

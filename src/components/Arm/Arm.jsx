@@ -20,8 +20,9 @@ const Arm = () => {
                         : {}
                     }
                 >
-                    <div className={c.rod}></div>
-                    <div className={c.head}></div>
+                    <div className={c.rod}>
+                        <div className={c.head}></div>
+                    </div>
                 </div>
             </div>
             
